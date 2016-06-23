@@ -1,4 +1,4 @@
-#include "batterychargerut.h"
+#include "ledcontrollerut.h"
 #include <QtTest>
 
 BatteryChargerUT::BatteryChargerUT()

@@ -1,6 +1,6 @@
 #include <QString>
 #include <QtTest>
-#include "batterychargerut.h"
+#include "ledcontrollerut.h"
 
 int main(int argc, char *argv[])
 {

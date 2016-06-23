@@ -15,9 +15,10 @@ CONFIG   -= app_bundle
 TEMPLATE = app
 
 
-SOURCES += tst_batterychargerut.cpp \
-    batterychargerut.cpp
+SOURCES += \
+    ledcontrollerut.cpp \
+    tst_batterycharger.cpp
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
 HEADERS += \
-    batterychargerut.h
+    ledcontrollerut.h
