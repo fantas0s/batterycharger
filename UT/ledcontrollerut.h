@@ -1,14 +1,15 @@
 #ifndef BATTERYCHARGERUT_H
 #define BATTERYCHARGERUT_H
 #include <QObject>
-class BatteryChargerUT : public QObject
+
+class LedControllerUT : public QObject
 {
     Q_OBJECT
 
 public:
-    BatteryChargerUT();
+    LedControllerUT();
 
 private Q_SLOTS:
-    void blinkLed();
+    void readWriteGPIOPinNumber();
 };
 #endif // BATTERYCHARGERUT_H

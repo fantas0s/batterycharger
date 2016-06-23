@@ -5,7 +5,6 @@
 #-------------------------------------------------
 
 QT       += testlib
-
 QT       -= gui
 
 TARGET = tst_batterychargerut
@@ -17,8 +16,10 @@ TEMPLATE = app
 
 SOURCES += \
     ledcontrollerut.cpp \
-    tst_batterycharger.cpp
+    tst_batterycharger.cpp \
+    ../ledcontroller.cpp
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
 HEADERS += \
-    ledcontrollerut.h
+    ledcontrollerut.h \
+    ../ledcontroller.h

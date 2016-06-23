@@ -4,9 +4,9 @@
 
 int main(int argc, char *argv[])
 {
-    BatteryChargerUT bcUT;
+    LedControllerUT lcUT;
     QTEST_SET_MAIN_SOURCE_PATH
-    int returnValue = QTest::qExec(&bcUT, argc, argv);
+    int returnValue = QTest::qExec(&lcUT, argc, argv);
     return returnValue;
 }
 
