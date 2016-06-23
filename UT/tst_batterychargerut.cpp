@@ -1,26 +1,13 @@
 #include <QString>
 #include <QtTest>
+#include "batterychargerut.h"
 
-class BatteryChargerUT : public QObject
+int main(int argc, char *argv[])
 {
-    Q_OBJECT
-
-public:
-    BatteryChargerUT();
-
-private Q_SLOTS:
-    void blinkLed();
-};
-
-BatteryChargerUT::BatteryChargerUT()
-{
+    BatteryChargerUT bcUT;
+    QTEST_SET_MAIN_SOURCE_PATH
+    int returnValue = QTest::qExec(&bcUT, argc, argv);
+    return returnValue;
 }
-
-void BatteryChargerUT::blinkLed()
-{
-    QVERIFY2(true, "Failure");
-}
-
-QTEST_APPLESS_MAIN(BatteryChargerUT)
 
 #include "tst_batterychargerut.moc"
