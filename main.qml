@@ -1,6 +1,6 @@
 import QtQuick 2.2
 import QtQuick.Window 2.2
-import QtQuick.VirtualKeyboard 1.0
+import QtQuick.Controls 2.0
 
 Window {
     visible:true
@@ -11,57 +11,11 @@ Window {
         id: root
         anchors.fill: parent
 
-        Text {
-            id: text
-            text: qsTr("Hello World")
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.topMargin: 100
-            anchors.top: parent.top
-        }
+        Button {
+            anchors.centerIn: parent
+            text: "Press to light LED"
+            onClicked: {
 
-        Rectangle {
-            height: text.height * 1.2
-            width: text.width * 3
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: text.bottom
-            anchors.topMargin: 20
-            border.width: 2
-            radius: 4
-            border.color: "blue"
-
-            TextInput {
-                anchors.fill: parent
-                anchors.margins: 4
-                text: "Text input, please type here"
-            }
-        }
-
-        InputPanel {
-            id: inputPanel
-            z: 99
-            y: root.height
-            anchors.left: root.left
-            anchors.right: root.right
-
-            states: State {
-                name: "visible"
-                when: Qt.inputMethod.visible
-                PropertyChanges {
-                    target: inputPanel
-                    y: root.height - inputPanel.height
-                }
-            }
-            transitions: Transition {
-                from: ""
-                to: "visible"
-                reversible: true
-                ParallelAnimation {
-                    NumberAnimation {
-                        properties: "y"
-                        duration: 250
-                        easing.type: Easing.InOutQuad
-                    }
-                }
             }
         }
     }
