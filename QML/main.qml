@@ -1,6 +1,5 @@
-import QtQuick 2.2
+import QtQuick 2.3
 import QtQuick.Window 2.2
-import QtQuick.Controls 2.0
 
 Window {
     visible:true
@@ -10,13 +9,8 @@ Window {
     Item {
         id: root
         anchors.fill: parent
-
-        Button {
+        LedButton {
             anchors.centerIn: parent
-            text: "Press to light LED"
-            onClicked: {
-
-            }
         }
     }
 }
