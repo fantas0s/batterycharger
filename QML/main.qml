@@ -6,10 +6,12 @@ Window {
     width: Screen.width
     height: Screen.height
 
-    Item {
+    Rectangle {
         id: root
         anchors.fill: parent
+        color: ledLighter.ledOn ? "green" : "red"
         LedButton {
+            id: ledLighter
             anchors.centerIn: parent
         }
     }

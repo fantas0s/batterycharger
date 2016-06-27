@@ -4,7 +4,7 @@
 
 LedController::LedController() :
     gpioPinNumber(-1),
-    ledOn(false)
+    ledLightOn(false)
 {
 }
 
@@ -17,14 +17,14 @@ int LedController::getGpioPinNumber()
     return gpioPinNumber;
 }
 
-void LedController::setGpioPinNumber(const int pinNumber)
+void LedController::setGpioPinNumber(int pinNumber)
 {
     if( pinNumber < 7 )
     {
         if( gpioPinNumber >= 0 )
         {
             digitalWrite(gpioPinNumber, LOW);
-            emit ledOnChanged();
+            emit ledLightOnChanged();
         }
         pinMode(pinNumber, OUTPUT);
         gpioPinNumber = pinNumber;
@@ -36,18 +36,18 @@ void LedController::setGpioPinNumber(const int pinNumber)
     }
 }
 
-bool LedController::getLedOn()
+bool LedController::getLedLightOn()
 {
-    return ledOn;
+    return ledLightOn;
 }
 
-void LedController::setLedOn(const bool isOn)
+void LedController::setLedLightOn(bool isOn)
 {
     if( gpioPinNumber >= 0 )
     {
-        if( isOn != ledOn )
+        if( isOn != ledLightOn )
         {
-            emit ledOnChanged();
+            emit ledLightOnChanged();
         }
         if( isOn )
         {
@@ -57,6 +57,6 @@ void LedController::setLedOn(const bool isOn)
         {
             digitalWrite(gpioPinNumber, LOW);
         }
-        ledOn = isOn;
+        ledLightOn = isOn;
     }
 }

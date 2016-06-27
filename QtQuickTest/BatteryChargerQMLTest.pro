@@ -4,7 +4,9 @@ QT += qml quick
 CONFIG += c++11 qmltestcase
 
 SOURCES += \
-    tst_main.cpp
+    tst_main.cpp \
+    ../ledcontroller.cpp \
+    dummywiringpi.cpp
 
 RESOURCES += qml.qrc
 
@@ -16,3 +18,6 @@ include(deployment.pri)
 
 DISTFILES += \
     tst_ledbutton.qml
+
+HEADERS += \
+    ../ledcontroller.h
