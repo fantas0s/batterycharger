@@ -17,9 +17,11 @@ TEMPLATE = app
 SOURCES += \
     ledcontrollerut.cpp \
     tst_batterycharger.cpp \
-    ../ledcontroller.cpp
+    ../ledcontroller.cpp \
+    mock_wiringpi.cpp
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
 HEADERS += \
     ledcontrollerut.h \
-    ../ledcontroller.h
+    ../ledcontroller.h \
+    mock_wiringpi.h

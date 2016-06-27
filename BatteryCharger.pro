@@ -3,7 +3,11 @@ TEMPLATE = app
 QT += qml quick
 
 SOURCES += main.cpp \
-    ledcontroller.cpp
+    ledcontroller.cpp \
+    wiringPi/wiringPi/wiringPi.c \
+    wiringPi/wiringPi/softPwm.c \
+    wiringPi/wiringPi/softTone.c \
+    wiringPi/wiringPi/piHiPri.c
 
 RESOURCES += qml.qrc
 
@@ -14,4 +18,7 @@ QML_IMPORT_PATH =
 include(deployment.pri)
 
 HEADERS += \
-    ledcontroller.h
+    ledcontroller.h \
+    wiringPi/wiringPi/wiringPi.h \
+    wiringPi/wiringPi/softPwm.h \
+    wiringPi/wiringPi/softTone.h

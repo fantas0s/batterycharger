@@ -11,5 +11,7 @@ public:
 
 private Q_SLOTS:
     void readWriteGPIOPinNumber();
+    void setGetLedOn();
+    void testUnInitializedCalls();
 };
 #endif // BATTERYCHARGERUT_H

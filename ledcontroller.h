@@ -8,13 +8,17 @@ public:
     LedController();
     virtual ~LedController();
     int getGpioPinNumber();
-    void setGpioPinNumber(int pinNumber);
+    void setGpioPinNumber(const int pinNumber);
+    bool getLedOn();
+    void setLedOn(const bool isOn);
 signals:
     void gpioPinNumberChanged();
+    void ledOnChanged();
 private:
     Q_OBJECT
     Q_PROPERTY(int gpioPinNumber READ getGpioPinNumber WRITE setGpioPinNumber NOTIFY gpioPinNumberChanged)
     int gpioPinNumber;
+    bool ledOn;
 };
 
 #endif // LEDCONTROLLER_H
