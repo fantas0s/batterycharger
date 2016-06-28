@@ -66,3 +66,13 @@ void LedControllerUT::testUnInitializedCalls()
     QCOMPARE(pinSetByWriteMock, -2);
     QCOMPARE(valueSetByWriteMock, -2);
 }
+
+void LedControllerUT::testInvalidPinIndex()
+{
+    LedController controller;
+    QCOMPARE(controller.gpioPinNumber, -1);
+    controller.setGpioPinNumber(17); // Too big
+    QCOMPARE(controller.gpioPinNumber, -1);
+    controller.setGpioPinNumber(16); // Last OK
+    QCOMPARE(controller.gpioPinNumber, 16);
+}

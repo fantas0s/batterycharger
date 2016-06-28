@@ -6,7 +6,7 @@ Button {
     id: __ledLightButton
     text: "Press to light LED"
     property bool ledOn: false
-    property int gpioPin: 0
+    property int gpioPin: -1
     LedController {
         gpioPinNumber: __ledLightButton.gpioPin
         ledLightOn: __ledLightButton.ledOn

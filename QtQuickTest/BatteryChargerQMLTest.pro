@@ -17,7 +17,8 @@ QML_IMPORT_PATH =
 include(deployment.pri)
 
 DISTFILES += \
-    tst_ledbutton.qml
+    tst_ledbutton.qml \
+    tst_ledswitch.qml
 
 HEADERS += \
     ../ledcontroller.h

@@ -9,10 +9,50 @@ Window {
     Rectangle {
         id: root
         anchors.fill: parent
-        color: ledLighter.ledOn ? "green" : "red"
-        LedButton {
-            id: ledLighter
+        color: "grey"
+        Column {
             anchors.centerIn: parent
+            spacing: 20
+            LedSwitch {
+                pinNumber: 0
+                checked: false
+                color: "red"
+            }
+            LedSwitch {
+                pinNumber: 1
+                checked: false
+                color: "green"
+            }
+            LedSwitch {
+                pinNumber: 2
+                checked: false
+                color: "yellow"
+            }
+            LedSwitch {
+                pinNumber: 3
+                checked: false
+                color: "red"
+            }
+            LedSwitch {
+                pinNumber: 4
+                checked: false
+                color: "green"
+            }
+            LedSwitch {
+                pinNumber: 5
+                checked: false
+                color: "yellow"
+            }
+            LedSwitch {
+                pinNumber: 6
+                checked: false
+                color: "red"
+            }
+            LedSwitch {
+                pinNumber: 7
+                checked: false
+                color: "green"
+            }
         }
     }
 }

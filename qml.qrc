@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>QML/main.qml</file>
         <file>QML/LedButton.qml</file>
+        <file>QML/LedSwitch.qml</file>
     </qresource>
 </RCC>

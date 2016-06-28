@@ -2,6 +2,8 @@
 #include "wiringPi/wiringPi/wiringPi.h"
 #include <QDebug>
 
+#define MAX_NUM_IO_PINS_FROM_WIRINGPI 17
+
 LedController::LedController() :
     gpioPinNumber(-1),
     ledLightOn(false)
@@ -19,7 +21,7 @@ int LedController::getGpioPinNumber()
 
 void LedController::setGpioPinNumber(int pinNumber)
 {
-    if( pinNumber < 7 )
+    if( pinNumber < MAX_NUM_IO_PINS_FROM_WIRINGPI )
     {
         if( gpioPinNumber >= 0 )
         {

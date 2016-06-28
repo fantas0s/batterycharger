@@ -12,9 +12,9 @@ TestCase {
         id: buttonToTest
     }
 
-    function test_text() {
+    function test_initial_values() {
         compare(buttonToTest.text, "Press to light LED")
         compare(buttonToTest.ledOn, false)
-        compare(buttonToTest.gpioPin, 0)
+        compare(buttonToTest.gpioPin, -1)
     }
 }
