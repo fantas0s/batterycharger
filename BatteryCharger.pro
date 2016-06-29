@@ -7,7 +7,8 @@ SOURCES += main.cpp \
     wiringPi/wiringPi/wiringPi.c \
     wiringPi/wiringPi/softPwm.c \
     wiringPi/wiringPi/softTone.c \
-    wiringPi/wiringPi/piHiPri.c
+    wiringPi/wiringPi/piHiPri.c \
+    buttonreader.cpp
 
 RESOURCES += qml.qrc
 
@@ -21,4 +22,5 @@ HEADERS += \
     ledcontroller.h \
     wiringPi/wiringPi/wiringPi.h \
     wiringPi/wiringPi/softPwm.h \
-    wiringPi/wiringPi/softTone.h
+    wiringPi/wiringPi/softTone.h \
+    buttonreader.h

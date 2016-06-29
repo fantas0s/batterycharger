@@ -16,11 +16,9 @@ void LedControllerUT::readWriteGPIOPinNumber()
     QCOMPARE(controller.gpioPinNumber, -1);
     QCOMPARE(controller.getGpioPinNumber(), -1);
     QCOMPARE(spy.count(), 0);
-    pinSetByModeMock = -1;
-    modeSetByModeMock = -1;
+    modeSetByModeMock[3] = -1;
     controller.setGpioPinNumber(3);
-    QCOMPARE(pinSetByModeMock, 3);
-    QCOMPARE(modeSetByModeMock, OUTPUT);
+    QCOMPARE(modeSetByModeMock[3], OUTPUT);
     QCOMPARE(spy.count(), 1);
     QCOMPARE(controller.gpioPinNumber, 3);
     QCOMPARE(controller.getGpioPinNumber(), 3);
@@ -32,39 +30,30 @@ void LedControllerUT::setGetLedOn()
     QSignalSpy spy(&controller, SIGNAL(ledLightOnChanged()));
     controller.setGpioPinNumber(6);
     QCOMPARE(controller.getLedLightOn(), false);
-    pinSetByWriteMock = -1;
-    valueSetByWriteMock = HIGH;
+    valueSetByWriteMock[6] = HIGH;
     QCOMPARE(spy.count(), 0);
     controller.setLedLightOn(false);
     QCOMPARE(spy.count(), 0);
     QCOMPARE(controller.ledLightOn, false);
-    QCOMPARE(pinSetByWriteMock, 6);
-    QCOMPARE(valueSetByWriteMock, LOW);
-    pinSetByWriteMock = -1;
-    valueSetByWriteMock = LOW;
+    QCOMPARE(valueSetByWriteMock[6], LOW);
     controller.setLedLightOn(true);
     QCOMPARE(controller.ledLightOn, true);
-    QCOMPARE(pinSetByWriteMock, 6);
-    QCOMPARE(valueSetByWriteMock, HIGH);
+    QCOMPARE(valueSetByWriteMock[6], HIGH);
     QCOMPARE(controller.getLedLightOn(), true);
     QCOMPARE(spy.count(), 1);
     controller.setGpioPinNumber(3);
     QCOMPARE(spy.count(), 2);
-    QCOMPARE(pinSetByWriteMock, 6);
-    QCOMPARE(valueSetByWriteMock, LOW);
+    QCOMPARE(valueSetByWriteMock[6], LOW);
 }
 
 void LedControllerUT::testUnInitializedCalls()
 {
     LedController controller;
-    pinSetByWriteMock = -2;
-    valueSetByWriteMock = -2;
+    valueSetByWriteMock[0] = -2;
     controller.setLedLightOn(true);
-    QCOMPARE(pinSetByWriteMock, -2);
-    QCOMPARE(valueSetByWriteMock, -2);
-    controller.setGpioPinNumber(0);
-    QCOMPARE(pinSetByWriteMock, -2);
-    QCOMPARE(valueSetByWriteMock, -2);
+    QCOMPARE(valueSetByWriteMock[0], -2);
+    controller.setGpioPinNumber(0);;
+    QCOMPARE(valueSetByWriteMock[0], -2);
 }
 
 void LedControllerUT::testInvalidPinIndex()

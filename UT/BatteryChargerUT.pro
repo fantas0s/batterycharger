@@ -18,10 +18,14 @@ SOURCES += \
     ledcontrollerut.cpp \
     tst_batterycharger.cpp \
     ../ledcontroller.cpp \
-    mock_wiringpi.cpp
+    mock_wiringpi.cpp \
+    buttonreaderut.cpp \
+    ../buttonreader.cpp
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
 HEADERS += \
     ledcontrollerut.h \
     ../ledcontroller.h \
-    mock_wiringpi.h
+    mock_wiringpi.h \
+    buttonreaderut.h \
+    ../buttonreader.h
