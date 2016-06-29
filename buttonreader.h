@@ -24,7 +24,7 @@ private:
     bool pin0ButtonPressed;
     bool pin1ButtonPressed;
     bool pin16ButtonPressed;
-    QTimer *pinReadIntervalTimer;
+    QTimer *readIntervalTimer;
 };
 
 #endif // BUTTONREADER_H

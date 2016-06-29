@@ -10,9 +10,9 @@ ButtonReader::ButtonReader() :
     pin16ButtonPressed(false)
 {
     pinMode (0, INPUT) ;
-/*    pinReadIntervalTimer = new QTimer(this);
-    connect(pinReadIntervalTimer, SIGNAL(timeout()), this, SLOT(readPinValues()));
-    timer->start(1000);*/
+    readIntervalTimer = new QTimer(this);
+    connect(readIntervalTimer, SIGNAL(timeout()), this, SLOT(readPinValues()));
+    readIntervalTimer->start(100);
 }
 
 ButtonReader::~ButtonReader()

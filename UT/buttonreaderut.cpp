@@ -1,13 +1,21 @@
 #include "buttonreaderut.h"
 #include "../buttonreader.h"
 #include <QtTest>
+#include <QTest>
 #include <QSignalSpy>
 #include "mock_wiringpi.h"
 #include "../wiringPi/wiringPi/wiringPi.h"
 
 ButtonReaderUT::ButtonReaderUT()
 {
+}
 
+void ButtonReaderUT::initTestCase()
+{
+}
+
+void ButtonReaderUT::cleanupTestCase()
+{
 }
 
 void ButtonReaderUT::readInitialValues()

@@ -3,5 +3,6 @@
         <file>QML/main.qml</file>
         <file>QML/LedButton.qml</file>
         <file>QML/LedSwitch.qml</file>
+        <file>QML/ButtonLight.qml</file>
     </qresource>
 </RCC>

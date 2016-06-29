@@ -8,8 +8,9 @@ class ButtonReaderUT : public QObject
 
 public:
     ButtonReaderUT();
-
 private Q_SLOTS:
+    void initTestCase();
+    void cleanupTestCase();
     void readInitialValues();
     void checkModeChangesByBitmask();
     void checkValueUpdatesBySignal();
