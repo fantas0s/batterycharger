@@ -8,22 +8,19 @@ class ButtonReader : public QObject
 public:
     ButtonReader();
     virtual ~ButtonReader();
-    void setReadModePinMask(quint32 bitmask);
-    quint32 getReadModePinMask();
-    bool getPin0ButtonPressed();
+    void setPin(int pin);
+    int getPin();
 signals:
-    void readModePinMaskChanged();
-    void pin0ButtonPressedChanged();
+    void pinChanged();
+    void pressed();
+    void released();
 public slots:
-    void readPinValues();
+    void readValueOfPin();
 private:
     Q_OBJECT
-    Q_PROPERTY(quint32 readmodePinmask READ getReadModePinMask WRITE setReadModePinMask NOTIFY readModePinMaskChanged)
-    Q_PROPERTY(bool pin0ButtonPressed READ getPin0ButtonPressed NOTIFY pin0ButtonPressedChanged)
-    quint32 readmodePins;
-    bool pin0ButtonPressed;
-    bool pin1ButtonPressed;
-    bool pin16ButtonPressed;
+    Q_PROPERTY(quint32 pin READ getPin WRITE setPin NOTIFY pinChanged)
+    int pinToRead;
+    bool buttonDown;
     QTimer *readIntervalTimer;
 };
 

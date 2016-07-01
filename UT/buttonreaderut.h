@@ -14,5 +14,6 @@ private Q_SLOTS:
     void readInitialValues();
     void checkModeChangesByBitmask();
     void checkValueUpdatesBySignal();
+    void uninitializedValues();
 };
 #endif // BUTTONREADERUT_H

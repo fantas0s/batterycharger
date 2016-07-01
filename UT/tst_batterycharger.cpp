@@ -13,4 +13,4 @@ int main(int argc, char *argv[])
     return returnValue;
 }
 
-#include "tst_batterychargerut.moc"
+//#include "tst_batterychargerut.moc"

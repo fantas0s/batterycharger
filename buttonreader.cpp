@@ -1,17 +1,15 @@
 #include "buttonreader.h"
 #include "wiringPi/wiringPi/wiringPi.h"
+#include <QDebug>
 
 #define MAX_NUM_IO_PINS_FROM_WIRINGPI 17
 
 ButtonReader::ButtonReader() :
-    readmodePins(0),
-    pin0ButtonPressed(false),
-    pin1ButtonPressed(false),
-    pin16ButtonPressed(false)
+    pinToRead(-1),
+    buttonDown(false)
 {
-    pinMode (0, INPUT) ;
     readIntervalTimer = new QTimer(this);
-    connect(readIntervalTimer, SIGNAL(timeout()), this, SLOT(readPinValues()));
+    connect(readIntervalTimer, SIGNAL(timeout()), this, SLOT(readValueOfPin()));
     readIntervalTimer->start(100);
 }
 
@@ -19,54 +17,40 @@ ButtonReader::~ButtonReader()
 {
 }
 
-void ButtonReader::setReadModePinMask(quint32 bitmask)
+void ButtonReader::setPin(int pin)
 {
-    readmodePins = bitmask;
-    for( int pin = 0 ; pin < MAX_NUM_IO_PINS_FROM_WIRINGPI ; ++pin )
+    if( (pin < 0) ||
+        (pin >= MAX_NUM_IO_PINS_FROM_WIRINGPI) )
     {
-        if( (0x1 << pin) & bitmask )
-        {
-            pinMode(pin, INPUT);
-        }
+        qDebug() << "Trying to set invalid pin" << pin;
     }
-    emit readModePinMaskChanged();
-    readPinValues();
-}
-
-quint32 ButtonReader::getReadModePinMask()
-{
-    return readmodePins;
-}
-
-bool ButtonReader::getPin0ButtonPressed()
-{
-    return pin0ButtonPressed;
-}
-
-void ButtonReader::readPinValues()
-{
-    for( int pin = 0 ; pin < MAX_NUM_IO_PINS_FROM_WIRINGPI ; ++pin )
+    else
     {
-        bool newValue = false;
-        if( (0x1 << pin) & readmodePins )
+        pinMode(pin, INPUT);
+        pinToRead = pin;
+        emit pinChanged();
+        readValueOfPin();
+    }
+}
+
+int ButtonReader::getPin()
+{
+    return pinToRead;
+}
+
+void ButtonReader::readValueOfPin()
+{
+    if( (0<=pinToRead) &&
+        (MAX_NUM_IO_PINS_FROM_WIRINGPI>pinToRead) )
+    {
+        bool newValue = (LOW == digitalRead(pinToRead));
+        if( newValue != buttonDown )
         {
-            newValue = (LOW == digitalRead(pin));
-        }
-        if( 0 == pin )
-        {
-            if( pin0ButtonPressed != newValue )
-            {
-                pin0ButtonPressed = newValue;
-                emit pin0ButtonPressedChanged();
-            }
-        }
-        if( 1 == pin )
-        {
-            pin1ButtonPressed = newValue;
-        }
-        if( 16 == pin )
-        {
-            pin16ButtonPressed = newValue;
+            buttonDown = newValue;
+            if( buttonDown )
+                emit pressed();
+            else
+                emit released();
         }
     }
 }
